@@ -7,35 +7,27 @@ Playwright能够跨越所有现代浏览器实现快速、可靠和功能强大�
 ## 支持所有浏览器
 
 - 在Chromium、Firefox和WebKit上进行测试：Playwright的API覆盖了所有现代浏览器，包括谷歌Chrome和微软Edge（Chrome内核）、苹果Safari（WebKit内核）和Mozilla Firefox；
-- 跨平台WebKit测试：通过Playwright，使用针对Windows、Linux和macOS的WebKit版本，测试应用程序在Apple Safari中的表现。支持在本地和CI环境下进行测试；
+- 跨平台WebKit测试：通过Playwright，使用针对Windows、Linux和macOS的WebKit版本，测试应用程序在Apple Safari中的表现，支持在本地和CI环境下运行测试；
 - 模拟移动端测试：使用Playwithr提供的设备仿真功能，测试web应用程序在移动端浏览器中的表现；
-- 支持无头和有头模式：Playwright支持所有浏览器和所有平台的无头（无浏览器用户界面）和有头（有浏览器用户界面）模式。有头模式非常适合调试，而无头模式速度更快，适合CI/云执行；
-
-
+- 支持浏览器无头和有头模式：Playwright支持所有浏览器和所有平台的无头（无浏览器用户界面）和有头（有浏览器用户界面）模式。有头模式非常适合调试，而无头模式速度更快，适合CI/云执行；
 
 
 
 ## 快速可靠的执行
 
-- 支持自动等待的API：Playwright内置的API会自动等待元素准备就绪，这提高了测试可靠性并简化了测试用例编写；
-- 无超时自动化：Playwright接收浏览器信号，如网络请求、页面导航和页面加载事件，消除在用例中使用硬编码的方式来设置最大超时时间；
+- 内置支持自动等待操作元素就绪的API，这提高了测试可靠性并简化了测试用例编写；
+- Playwright接收浏览器信号，如网络请求、页面导航和页面加载事件，消除在用例中使用硬编码的方式来设置最大超时时间；
 - 与浏览器上下文快速隔离：对具有浏览器上下文的多个独立执行环境重用单个浏览器实例；
 - 弹性的页面元素选择器：Playwright可以依靠面向用户的字符串，如文本内容和label标签来选择元素，这些字符串往往比紧密耦合到DOM结构的选择器更有弹性。
 
 
 
-
-
 ## 强大的自动化能力
 
-- 支持处理多个域名、多个页面或多个frame的场景：Playwright是一个进程外自动化驱动程序，它不受页面内JavaScript执行范围的限制；
+- 支持处理多个域、多页面和多frame的场景：Playwright是一个进程外自动化驱动程序，它不受页面内JavaScript执行范围的限制；
 - 强大的网络控制能力：Playwright将上下文范围的网络拦截引入存根以及模拟网络请求；
-- 支持现代化的Web API：Playwright支持阴影穿透选择器、地理位置、权限、web开发者等web api;
-- 覆盖所有场景的能力：支持文件下载和上载、进程外iFrame、本机输入事件，甚至黑暗模式；
-
-
-
-
+- 支持现代化的网络特性：Playwright通过shadow-piercing selectors、geolocation、permissions、web workers和其他web API来支持web组件；
+- 覆盖所有场景的能力：支持文件下载和上载、进程外iFrame、本地输入事件，甚至是黑暗模式；
 
 
 
@@ -43,7 +35,7 @@ Playwright能够跨越所有现代浏览器实现快速、可靠和功能强大�
 
 ## 安装
 
-> 查看[系统要求](#系统要求)
+> 查看<a href="#system">系统要求</a>
 
 ### Pip
 
@@ -52,8 +44,6 @@ pip install --upgrade pip
 pip install playwright
 playwright install
 ```
-
-
 
 ### Conda
 
@@ -64,9 +54,7 @@ conda install playwright
 playwright install
 ```
 
-注意：`playwright install` 命令会安装Chromium、Firefox和WebKit浏览器的二进制安装包，要修改此行为，请参见安装参数部分的内容。
-
-
+注意：`playwright install` 命令会安装Chromium、Firefox和WebKit三种的浏览器的二进制安装包，要修改此行为，请参见<a href="#installBrowsers">安装参数部分的内容</a>。
 
 
 
@@ -126,8 +114,6 @@ with sync_playwright() as p:
 ```python
 firefox.launch(headless=False, slow_mo=50)
 ```
-
-
 
 
 
@@ -201,7 +187,7 @@ pyinstaller -F main.py
 
 
 
-### 系统要求
+### <span id="system">系统要求</span>
 
 Playwright需要Python 3.7或更高版本，以及可跨系统运行的Chromium、Firefox以及WebKit浏览器的二进制安装包。
 
@@ -227,7 +213,7 @@ Playwright脚本使用现有的调试工具，如Node.js调试器和浏览器开
 
 ## Playwright Inspector
 
-Playwright Inspector是一个GUI工具，帮助编写和调试Playwright脚本，这是默认推荐的脚本故障排除工具。
+Playwright Inspector是一个GUI工具，帮助编写和调试Playwright脚本，这也是默认推荐的脚本debug工具。在后文中会有章节进行详细介绍。
 
  ![Playwright Inspector](https://tva1.sinaimg.cn/large/008i3skNgy1gu6v6qwe69j60g90iaq5602.jpg)
 
@@ -235,15 +221,13 @@ Playwright Inspector是一个GUI工具，帮助编写和调试Playwright脚本�
 
 ## Playwright Trace Viewer
 
-[Playwright Trace Viewer]()是一个GUI工具，可帮助以事后方式对测试运行进行故障排除。
+Playwright Trace Viewer是一个GUI工具，用于帮助记录脚本运行时的产生的详细堆栈信息。在后文中会有章节进行详细介绍。
 
-
-
-
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gu75b3pcy1j60z00gcwgn02.jpg)
 
 ## 以有头方式启动浏览器
 
-默认情况下，Playwright以无头模式运行浏览器。要更改此行为，请使用headless:false作为启动选项。您还可以使用slow_mo选项来降低执行速度，并在调试时进行跟踪。
+默认情况下，Playwright以无头模式运行浏览器。要更改此行为，请传入 headless=false 作为启动选项。您还可以使用slow_mo选项来降低执行速度，并在调试时进行跟踪。
 
 ```python
 # sync
@@ -255,21 +239,19 @@ await chromium.launch(headless=False, slow_mo=100) # or firefox, webkit
 
 
 
-
-
 ## 浏览器开发者工具
 
-您可以在Chromium、Firefox和WebKit中使用浏览器开发工具，同时在headed模式下运行剧作家脚本。开发人员工具有助于：
+在以有头模式运行Playwright脚本时，可以在Chromium、Firefox和WebKit中使用F12打开浏览器开发者工具。使用浏览器开发者工具有助于：
 
 -   检查DOM树并查找元素选择器；
 
 -   在执行期间查看控制台日志（或了解如何[通过API读取日志](https://playwright.dev/python/docs/verification#console-logs)）；
 
--   检查网络活动和其他开发人员工具功能；
+-   检查网络活动或使用其他开发者工具功能；
 
-使用`page.pause`方法是在开发人员工具中暂停Playwright脚本执行和检查页面的一种简单方法。它还将打开Playwright Inspector以帮助调试。
+使用`page.pause`方法是在开发者工具中暂停Playwright脚本执行和检查页面的一种简单方法。它还将打开Playwright Inspector以帮助调试。
 
-对于Chromium：您还可以通过启动选项打开开发人员工具：
+对于Chromium浏览器，还可以通过启动选项自动打开开发者工具：
 
 ```python
 # sync
@@ -279,7 +261,7 @@ chromium.launch(devtools=True)
 await chromium.launch(devtools=True)
 ```
 
->   对于WebKit：在执行期间启动WebKit Inspector将阻止剧作家脚本进一步执行。
+>   对于WebKit：在执行期间启动WebKit Inspector将阻止playwright脚本进一步执行。
 
 
 
@@ -287,7 +269,7 @@ await chromium.launch(devtools=True)
 
 可以通过设置`PWDEBUG` 环境变量的方式，让Playwright脚本以debug方式运行。
 
-设置 PWDEBUG=1 将打开Playwright Inspector。
+设置 PWDEBUG=1，将自动打开Playwright Inspector。
 
 设置 PWDEBUG=console 将在开发者工具控制台中配置用于调试的浏览器，其具有以下特点：
 
@@ -295,7 +277,7 @@ await chromium.launch(devtools=True)
 
 -   将Playwright语句**默认**的超时设置为0（也就是不超时）； 
 
-    >   补充：如果在代码中手动设置了超时时间，如：page.set_default_timeout(30000)，则调试模式下仍然会生效，导致运行超时。
+    >   补充：如果在代码中手动设置了超时时间，如：page.set_default_timeout(30000)，则调试模式下仍然会生效，将会导致运行超时。
 
 -   在浏览器页面中配置Playwright对象，并高亮显示Playwright选择器，可用于验证文本或复合选择器；
 
@@ -314,11 +296,33 @@ pytest -s
 
 
 
-## 【1】开发者工具控制台中的选择器
+## 开发者工具控制台中的选择器
 
-当设置 PWDEBUG=console 以debug模式运行脚本时，在开发者工具控制台中将会有一个`playwright`对象可用。
+当设置 PWDEBUG=console 以debug模式运行脚本时，在开发者工具控制台中将会有一个`playwright`对象可用，详细的操作步骤如下：
 
+1.   使用PWDEBUG=console运行Playwright脚本；
 
+2.   设置断点以暂停执行；
+
+3.   在浏览器开发者工具中打开控制台面板；
+
+4.   使用Playwighr API
+
+     -   playwright.$(selector)
+
+         根据selector，查询匹配的页面元素；
+
+     -   playwright.$$(selector)
+
+         和 playwright.$(selector) 类似，但是会返回所有匹配的元素（数组形式）；![](https://tva1.sinaimg.cn/large/008i3skNgy1gu6zydl7c0j60ql09z40602.jpg)
+
+     -   playwright.inspect(selector)
+
+     ​	在 Elements 面板显示此元素（如果相应浏览器的DevTools支持它）；
+
+     -   playwright.selector(element)
+
+         为给定元素生成选择器。
 
 ## 控制台打印详细的API日志
 
@@ -369,7 +373,7 @@ Commands:
 
 
 
-## install browsers
+## <span id='installBrowsers'>install browsers</span>
 
 运行以下命令，将会安装默认浏览器（包含Chromium、Firefox和WebKit三种），这将会花费一些时间。
 
@@ -560,7 +564,7 @@ playwright open --timezone="Europe/Rome" --geolocation="41.890221,12.492348" --l
 
 -   playwright.$(selector)
 
-    根据selectot，查询匹配的页面元素；
+    根据selector，查询匹配的页面元素；
 
 -   playwright.$$(selector)
 

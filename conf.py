@@ -20,7 +20,7 @@ source_parsers = {
 
 # -- Project information -----------------------------------------------------
 
-project = 'Playwright中文使用手册'
+project = 'Playwright官方文档中文版'
 copyright = '2021, Rethink <Tezign>'
 author = 'Rethink <Tezign>'
 
